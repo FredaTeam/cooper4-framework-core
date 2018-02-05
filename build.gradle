@@ -9,6 +9,7 @@ buildscript {
 }
 apply plugin: 'java'
 apply plugin: 'idea'
+apply plugin: 'maven-publish'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -45,6 +46,21 @@ dependencies {
     compile 'com.github.pagehelper:pagehelper:4.1.3'
 
     compile 'org.springframework.data:spring-data-redis:1.8.1.RELEASE'
+}
+
+publishing {
+    publications {
+        myPublication(MavenPublication) {
+            // telling gradle to publish project's jar archive (2)
+            from components.java
+        }
+    }
+    // telling gradle to publish artifact to local directory (3)
+    repositories {
+        maven {
+            url "file:///Users/rally/cooper4-3.0/cooper4-mvn-repo/"
+        }
+    }
 }
 
 task wrapper(type: Wrapper) {
