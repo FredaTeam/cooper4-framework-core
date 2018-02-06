@@ -58,7 +58,7 @@ publishing {
     // telling gradle to publish artifact to local directory (3)
     repositories {
         maven {
-            url "file:///Users/rally/cooper4-3.0/cooper4-mvn-repo/"
+            url "file:/${project.projectDir}/artifacts"
         }
     }
 }
